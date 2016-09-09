@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:mongo="http://www.springframework.org/schema/data/mongo"
+
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+            http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+            http://www.springframework.org/schema/data/mongo
+            http://www.springframework.org/schema/data/mongo/spring-mongo.xsd
+            http://www.springframework.org/schema/data/repository
+            http://www.springframework.org/schema/data/repository/spring-repository-1.5.xsd
+            ">
+
+    <!-- Default bean name is 'mongo' -->
+    <mongo:mongo host="localhost" port="27017">
+        <mongo:options connections-per-host="10"
+                       threads-allowed-to-block-for-connection-multiplier="10"
+                       auto-connect-retry="true" />
+    </mongo:mongo>
+    <!-- Default bean name is 'mongo' -->
+    <!-- 连接池配置详细查看http://api.mongodb.org/java/2.7.2/com/mongodb/MongoOptions.html#connectionsPerHost
+        或者http://www.cnblogs.com/huangfox/archive/2012/04/01/2428947.html
+    -->
+
+
+    <!-- Offers convenience methods and automatic mapping between MongoDB JSON documents and your domain classes. -->
+    <bean id="mongoTemplate" class="org.springframework.data.mongodb.core.MongoTemplate">
+        <constructor-arg ref="mongo"/>
+        <constructor-arg name="databaseName" value="test"/>
+    </bean>
+
+</beans>

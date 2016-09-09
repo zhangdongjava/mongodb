@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="service-mvc:war">
+    <output-path>D:/Users/dell_2/workspace/app-service/service-mvc/target</output-path>
+    <root id="archive" name="zzzApp.war">
+      <element id="artifact" artifact-name="service-mvc:war exploded" />
+    </root>
+  </artifact>
+</component>
